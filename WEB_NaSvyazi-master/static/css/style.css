@@ -1,0 +1,185 @@
+aside {
+    float: left;
+    position: fixed;
+    background: SeaGreen;
+    width: 14%;
+    padding: 2.5%;
+    height: 100vh;
+    border-right: 5px #4d4d4d;
+    border-bottom: solid;
+}
+
+form.login_form {
+    max-width: 800px;
+    background: SeaGreen;
+    border-radius: 100px;
+    margin-left: 40%;
+    padding: 30px;
+    border-color: black;
+}
+
+.color_fon_registration {
+    background-color: black;
+}
+
+aside {
+    float: left;
+    position: fixed;
+    background: SeaGreen;
+    width: 18%;
+    padding: 2.5%;
+    height: 100vh;
+    border-right: 5px #000000;
+    border-bottom: solid;
+}
+
+aside .logo {
+    font-size: 40px;
+    margin-left: 10px;
+    font-weight: bold;
+    position: relative;
+}
+
+.h1_sms{
+    margin-left: 55%;
+}
+.scrole_sms {
+    width: 57%;
+    height: 500px;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    margin-left: 30%;
+    margin-right: auto;
+}
+
+form.sms_login_form {
+    max-width: 57%;
+    background: SeaGreen;
+    border-radius: 4px;
+    margin-left: 30%;
+    margin-right: auto;
+    border-style: solid;
+    border-color: black;
+}
+
+.frame_sms {
+    border-style: solid;
+    border-color: SeaGreen;
+    border-radius: 4px;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+.center_label {
+    text-align: center;
+}
+
+.btn_sms {
+    padding-left: 10px;
+    padding-top: 3px;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    color: black;
+    background-color: #333; /* Modern Browsers */
+}
+
+a.links {
+    color: black;
+    text-decoration: underline;
+    transition: all .2s ease;
+}
+
+a.links:hover {
+    color: #E0FFFF;
+    text-decoration: underline;
+    transform: scale(1.05);
+}
+
+aside ul {
+    list-style: none
+}
+
+aside ul a {
+    color: black;
+    text-decoration: underline;
+    word-break: break-all;
+    display: block;
+    transition: all .6s ease;
+}
+
+aside ul a:hover, aside ul a:hover {
+    color: black;
+    text-decoration: none;
+    transform: scale(1.05);
+    background: #E0FFFF;
+}
+
+.btn_all_friend {
+    margin-left: 35%;
+}
+
+
+.transfate{
+    max-width:100%;
+    word-wrap:break-word;
+
+}
+
+.a_news {
+    margin-left: 44.1%;
+  }
+
+.container {
+    display: flex;
+  }
+
+
+.you {
+  background-color: #dadada;
+  border-color: #e3dcdc;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  height: 200px;
+  border: 5px solid black;
+}
+
+.container_news{
+    display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+.fixed {
+  flex: 0 0 200px;
+  background-color: #FF9999;
+}
+.rubbery {
+  flex: 1 1 25%;
+  background-color: #9999FF;
+}
+
+
+.ava{
+        display: block;
+        font-size: 15px;
+        font-family: "trebuchet ms", sans-serif;
+        font-weight: bold;
+        text-indent: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100%;
+    }
+

@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<form action="" class="login_form" method="post">
+    <h1 align="center">Главная</h1>
+    {% if current_user.is_authenticated %}
+        <a href="/new_news" class="btn btn-warning">Добавить конкурс</a>
+
+    {% else %}
+        <a href="/login" class="links"><i class="bi bi-person-add"></i> Войдите в аккаунт</a><a></a>
+    {% endif %}
+    <hr>
+    {% for new in news %}
+    {% if (current_user.is_authenticated and new.private == True) or (new.private == False) %}
+        <h3 class="transfate" align="center">{{ new.name }}</h3>
+
+
+        <span style="font-weight:bold"> <h6>организатор: {{ new.organizer }}</h6></span>
+        <span style="font-weight:bold"> <h6>уровень: {{ new.level }}</h6></span>
+        <span style="font-weight:bold"> <h6>номинация: {{ new.text }}</h6></span>
+        <span style="font-weight:bold"> <h6>формат: {{ new.form }}</h6></span>
+        <span style="font-weight:bold"> <h6>ссылка на итоги конкурса: {{ new.url }}</h6></span>
+        <span style="font-weight:bold"> <h6>место проведения конкурса: {{ new.place }}</h6></span>
+
+
+        {% if current_user.is_authenticated and current_user == new.user_relationship %}
+            <div>
+                <a href="/edit_news/{{ new.id }}" class="btn btn-primary btn_sms">
+                    Настройки конкурса
+                </a>
+            </div><br>
+            <div>
+                <a href="/edit_news/{{ new.id }}" class="btn btn-primary btn_sms">
+                    Участники
+                </a>
+            </div>
+         {% elif current_user.is_authenticated and (current_user.email == 'regeneration76@yandex.ru' or current_user.email == 'valerylarionov06@gmail.com') %}
+        <div>
+            <a href="/edit_news/{{ new.id }}" class="btn btn-primary btn_sms">
+                Настройки конкурса
+            </a>
+        </div><br>
+        <div>
+                <a href="/edit_news/{{ new.id }}" class="btn btn-primary btn_sms">
+                    Участники
+                </a>
+        </div>
+        {% endif %}
+    {% if current_user.is_authenticated %}
+        <div align="right">
+            <img src="data:image/png;base64, {{ image[loop.index0] }}" alt="ava" width="20" height="25"/>
+
+        </div>
+        {% if current_user.id == new.author %}
+            {% if confirm_check[loop.index - 1] == False %}
+                <p align="right"><a href="home/{{ new.author }}" class="links transfate">{{ authors[loop.index - 1] }}</a></p>
+                <p align="right" style="color:white">{{ new.data_str }}</p>
+            {% else %}
+                <h5 align="right"><a href="home/{{ new.author }}" class="links transfate">{{ authors[loop.index - 1] }}</a>
+                <img src="{{url_for('static', filename='img/galka.png')}}" style="max-width: 3.14%"></h5>
+                <p align="right" style="color:white">{{ new.data_str }}</p>
+            {% endif %}
+        {% else %}
+            {% if confirm_check[loop.index - 1] == False %}
+                <p align="right"><a href="user/{{ new.author }}" class="links transfate">{{ authors[loop.index - 1] }}</a></p>
+                <p align="right" style="color:white">{{ new.data_str }}</p>
+            {% else %}
+                <h5 align="right"><a href="user/{{ new.author }}" class="links transfate">{{ authors[loop.index - 1] }}</a>
+                <img src="{{url_for('static', filename='img/galka.png')}}" style="max-width: 3.14%"></h5>
+                <p align="right" style="color:white">{{ new.data_str }}</p>
+            {% endif %}
+        {% endif %}
+    {% else %}
+        {% if confirm_check[loop.index - 1] == False %}
+            <div align="right">
+                <img src="data:image/png;base64, {{ image[loop.index0] }}" alt="ava" width="20" height="25"/>
+            </div>
+            <div>
+                <a href="/edit_news/{{ new.id }}" class="btn btn-primary btn_sms">
+                    Участники
+                </a>
+            </div>
+            <p align="right">{{ authors[loop.index - 1] }}</p>
+        {% else %}
+        <div align="right">
+            <img src="data:image/png;base64, {{ image[loop.index0] }}" alt="ava" width="20" height="25"/>
+        </div>
+        <h5 align="right">{{ authors[loop.index - 1] }}<img src="{{url_for('static', filename='img/galka.png')}}" style="max-width: 3.14%"></h5>
+
+        {% endif %}
+    {% endif %}
+    <hr>
+    {% endif %}
+    {% endfor %}
+    <h3 align="center">Вы дошли до конца!</h3>
+</form>
+{% endblock %}

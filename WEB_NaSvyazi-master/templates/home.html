@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form action="" method="post" class="login_form">
+    <div align="center">
+        <img src="data:image/png;base64, {{ ava }}" alt="ava" width="200" height="250"/>
+    </div>
+    {% if current_user.confirmed == False %}
+        <h4 style="position: relative">Это ваша домашняя страница</h4>
+    {% else %}
+        <h4 style="position: relative">Привет, {{ current_user.name }}!
+            <img src="{{url_for('static', filename='img/galka.png')}}" style="max-width: 3.14%">
+            это ваша домашняя страница!</h4>
+    {% endif %}
+    {% if current_user.confirmed == False %}<br>
+        {% if stop != 'stop' %}
+            <a class="btn btn-primary btn_sms" href="/edit_home/{{ current_user.id }}" style="color: white; margin-left: 1%">Редактировать профиль</a>
+
+            <a href="/logout" class="btn btn-warning" style="margin-left: 5%">Выйти из аккаунта</a><br>
+        {% else %}
+            <a class="btn btn-primary btn_sms" href="/edit_home/{{ current_user.id }}" style="color: white; margin-left: 1%">Редактировать профиль</a>
+            <a href="/logout" class="btn btn-warning" style="margin-left: 45%">Выйти из аккаунта</a><br>
+        {% endif %}
+        {{text}}<br>
+    {% else %}
+        <a class="btn btn-primary btn_sms" href="/edit_home/{{ current_user.id }}"
+           style="color: white; margin-left: 2.06%;">Редактировать профиль</a>
+        <a href="/logout" class="btn btn-warning" style="margin-left: 37%;">Выйти из аккаунта </a><br>
+        {{text}}
+    {% endif %}
+    <hr>
+
+    <h4 align="center">Ваши конкурсы</h4>
+    <hr>
+    {% for elem in news %}
+
+        <h5 class="transfate" align="center">{{ elem.name }}</h5>
+        <span style="font-weight:bold"> <h6>организатор: {{ elem.organizer }}</h6></span>
+        <span style="font-weight:bold"> <h6>уровень: {{ elem.level }}</h6></span>
+        <span style="font-weight:bold"> <h6>номинация: {{ elem.text }}</h6></span>
+        <span style="font-weight:bold"> <h6>формат: {{ elem.form }}</h6></span>
+        <span style="font-weight:bold"> <h6>ссылка на итоги конкурса: {{ elem.url }}</h6></span>
+        <span style="font-weight:bold"> <h6>место проведения конкурса: {{ elem.place }}</h6></span>
+
+        <div class="container_news">
+          <p align="right" style="color:white">{{ elem.data_str }}</p>
+          <a href="/edit_news/{{ elem.id }}" class="btn btn-primary btn_sms a_news">Настройки конкурсов</a>
+        </div>
+        <hr>
+    {% endfor %}
+
+    <p>Шутка за 300: {{current_user.setup}}</p><hr>
+    <p>Псевдоним: {{current_user.domen}}</p><hr>
+
+</form>
+{% endblock %}
