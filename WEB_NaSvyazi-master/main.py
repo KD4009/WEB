@@ -317,6 +317,7 @@ def first():
                            image=result_image)
 
 
+
 @app.route('/edit_news/<int:id>', methods=['GET', 'POST'])
 @login_required
 def news_edit(id):
